@@ -1,0 +1,48 @@
+/* content style */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 왼쪽 정렬로 변경 */
+    justify-content: flex-start; /* 왼쪽 상단에 정렬 */
+    background-color: #f4f4f4;
+}
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.current-month {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.nav-button {
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+/* 하단 버튼 스타일 */
+.footer {
+    text-align: center;
+    margin-top: 20px; /* 버튼과 이미지, 텍스트 간의 간격 */
+}

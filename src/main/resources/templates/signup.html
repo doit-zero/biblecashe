@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">여정 합류</h2>
+
+    <!-- 회원가입 폼 -->
+    <form action="/signup" method="POST">
+        <div class="form-group">
+            <label for="group">아이디 그룹</label>
+            <!-- 드롭다운 선택 -->
+            <select id="group" name="group" class="form-control">
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="userId">유저id</label>
+            <input type="text" id="userId" class="form-control" name="userId" placeholder="아이디를 입력하세요">
+        </div>
+
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" class="form-control" name="name" placeholder="아이디를 입력하세요">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block">회원가입</button>
+    </form>
+</div>
+</body>
+</html>

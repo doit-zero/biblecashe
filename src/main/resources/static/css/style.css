@@ -1,0 +1,197 @@
+/* 기본 스타일 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 100%; /* 반응형 크기 */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.current-month {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.nav-button {
+    padding: 5px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+#daysOfWeek {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.day-name {
+    padding: 5px;
+    color: #555;
+}
+
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    position: relative;
+    background-color: #fafafa;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.calendar-day:hover {
+    background-color: #e6f7ff;
+}
+
+.calendar-day.disabled {
+    color: #ccc;
+    pointer-events: none;
+}
+
+.calendar-day.today {
+    background-color: #ffe6e6;
+}
+
+.calendar-day.selected {
+    background-color: #b3d9ff;
+}
+
+.calendar-day.today .dot {
+    width: 5px;
+    height: 5px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 하단 버튼 스타일 */
+.footer {
+    text-align: center;
+    margin-top: 20px; /* 버튼과 이미지, 텍스트 간의 간격 */
+}
+
+
+.verse-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.verse-button:hover {
+    background-color: #218838;
+}
+
+/* 동전 이미지 및 달란트 스타일 */
+.coin-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px; /* '오늘의 말씀' 버튼과 동전 이미지 사이 간격 */
+}
+
+.coin-info img {
+    width: 1em; /* 동전 이미지 크기를 텍스트 크기에 맞게 설정 */
+    height: 1em;
+    margin-right: 5px; /* 텍스트와 이미지 사이 간격 */
+}
+
+.coin-text, .coin-amount {
+    font-size: 1em;
+}
+
+.left-aligned {
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+
+/* 반응형 디자인 */
+@media (max-width: 600px) {
+    #calendar {
+        gap: 3px;
+    }
+
+    .calendar-day {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .nav-button {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    .current-month {
+        font-size: 14px;
+    }
+
+    .verse-button {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .dropdown {
+        padding: 5px 10px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        margin-right: 10px;
+    }
+
+    .year-text {
+        font-size: 16px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+}

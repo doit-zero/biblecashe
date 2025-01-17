@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반응형 달력</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+    <div class="calendar-header">
+        <div class="current-month" id="yearText">2025년</div>
+        <select id="monthSelect" class="dropdown"></select>
+        <button class="nav-button" id="todayButton">오늘</button>
+    </div>
+
+    <div id="daysOfWeek"></div>
+    <div id="calendar"></div>
+
+    <div class="footer">
+        <!-- '오늘의 말씀' 버튼을 link로 감싸지 않고, 클릭 이벤트로 처리하도록 수정 -->
+        <button class="verse-button" id="verseButton">오늘의 말씀</button>
+        <div class="coin-info">
+            <img th:src="@{/images/coin.png}" alt="동전 이미지"> <!-- 동전 이미지 파일 경로 -->
+            <span class="coin-text">달란트</span>
+            <span class="coin-amount">: 100</span>
+        </div>
+    </div>
+
+</div>
+
+<!-- JavaScript -->
+<script th:src="@{/js/calendar.js}"></script>
+</body>
+</html>

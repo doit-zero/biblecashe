@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성경 구절</title>
+    <link rel="stylesheet" th:href="@{/css/contentStyle.css}">
+
+    <!-- 부트스트랩 CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- 부트스트랩 아이콘 (선택 사항) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+
+<div th:each="contentDto, iterStat : ${contentDtoList}">
+    <div th:if="${iterStat.index == 0 or contentDto.getParagraph() == 1}">
+        <h2 th:text="${contentDto.getLongLabel()} + ' ' + ${contentDto.getChapter()} + '장'"></h2>
+    </div>
+
+    <div th:text="${contentDto.getParagraph()} + '. ' + ${contentDto.getSentence()}" style="margin-bottom: 10px;"></div>
+</div>
+
+<div class="d-flex justify-content-between mt-3">
+    <form action="/history" method="POST">
+        <input type="hidden" name="newDate" value="${newDate}">
+        <button type="submit" class="btn-secondary btn-block text-center">읽기 완료</button>
+    </form>
+</div>
+
+</body>
+</html>
