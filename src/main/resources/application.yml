@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:h2:tcp://localhost/~/bible
     username: sa
-    password: sa
+    password: 
     driver-class-name: org.h2.Driver
 
   jpa:
@@ -16,8 +16,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: wownsdl1575@gmail.com
-    password: ufnldywhztdifplr
+    username:
+    password: 
     properties:
       mail:
         smtp:
