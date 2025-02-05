@@ -12,6 +12,23 @@ spring:
       hibernate:
         format_sql: true
 
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: wownsdl1575@gmail.com
+    password: ufnldywhztdifplr
+    properties:
+      mail:
+        smtp:
+          auth: true
+          timeout: 5000
+          starttls:
+            enable: true
+
 logging:
   level:
     org.hibernate.sql: debug
+
+server:
+  address: 0.0.0.0

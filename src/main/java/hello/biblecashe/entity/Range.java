@@ -19,16 +19,18 @@ public class Range {
     @GeneratedValue
     private Long idx;
 
-    private int startPoint;
+    private int book;
 
-    private int endPoint;
+    private int endChapter;
 
     @Column(columnDefinition = "DATE")
     private LocalDate updatedAt;
 
-    public Range(int startPoint, int endPoint, LocalDate updatedAt) {
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
-        this.updatedAt = updatedAt;
+    public static Range create(int book,int endChapter,LocalDate localDate){
+        Range range = new Range();
+        range.book = book;
+        range.endChapter = endChapter;
+        range.updatedAt = localDate;
+        return range;
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반응형 달력</title>
+    <title>오늘의 말씀</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
@@ -20,11 +20,45 @@
     <div class="footer">
         <!-- '오늘의 말씀' 버튼을 link로 감싸지 않고, 클릭 이벤트로 처리하도록 수정 -->
         <button class="verse-button" id="verseButton">오늘의 말씀</button>
-        <div class="coin-info">
-            <img th:src="@{/images/coin.png}" alt="동전 이미지"> <!-- 동전 이미지 파일 경로 -->
-            <span class="coin-text">달란트</span>
-            <span class="coin-amount">: 100</span>
+
+        <h2>현재까지 가장 많이 읽은 순위</h2>
+        <div th:each="entry : ${groupedRanking}">
+            <span th:text="|${entry.key}등 |"></span>
+
+            <!-- 순위 내 멤버들의 이름(그룹) 및 읽은 횟수 출력 -->
+            <span th:each="member, iterStat : ${entry.value}">
+        <span th:text="|${member.memberGroup} ${member.name} ${member.readCount}장|"></span>
+
+                <!-- 마지막 멤버가 아니면 쉼표 추가 -->
+        <span th:if="!${iterStat.last}">, </span>
+    </span>
+            <br/>
         </div>
+
+        <h2>이번주 순위</h2>
+        <div th:each="entry : ${weeklyRankinMap}">
+            <span th:text="|${entry.key}등 |"></span>
+
+            <span th:each="member, iterStat : ${entry.value}" th:if="${member.readCount > 0}">
+        <span th:text="|${member.name} ${member.memberGroup} ${member.readCount}장|"></span>
+        <span th:if="!${iterStat.last}">, </span>
+    </span>
+            <br/>
+        </div>
+
+        <h2>그룹별 읽은 장 수</h2>
+        <div th:each="groupReadCount : ${groupReadCountDtos}">
+            <span th:text="${groupReadCount.memberGroup} + ' 총 ' + ${groupReadCount.totalReadCount} + '장'"></span>
+            <br/>
+        </div>
+
+        <h3>추가로 읽은 말씀</h3>
+        <form id="additionalVerseForm" th:action="@{/add}" method="post">
+            <div class="additional-verse">
+                <input type="number" id="additionalVerseInput" name="additionalVerse" class="number-input" required>
+                <button type="submit" class="verse-button" id="additionalVerseButton">추가</button>
+            </div>
+        </form>
     </div>
 
 </div>

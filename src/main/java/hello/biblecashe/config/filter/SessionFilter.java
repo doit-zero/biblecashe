@@ -26,7 +26,7 @@ public class SessionFilter implements Filter {
         long currentTime = System.currentTimeMillis();
 
         // 세션 생성시간과 현재 시간을 비교해서 timeout보다 클 경우 세션을 만료시킨다.
-        long timeout = 10000;
+        long timeout = 3_600_000;
         if(currentTime - lastAccessedTime > timeout){
             session.invalidate();
             httpResponse.sendRedirect(httpRequest.getContextPath() + "/");

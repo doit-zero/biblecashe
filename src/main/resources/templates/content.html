@@ -14,7 +14,6 @@
 
 </head>
 <body>
-
 <div th:each="contentDto, iterStat : ${contentDtoList}">
     <div th:if="${iterStat.index == 0 or contentDto.getParagraph() == 1}">
         <h2 th:text="${contentDto.getLongLabel()} + ' ' + ${contentDto.getChapter()} + '장'"></h2>
@@ -25,7 +24,7 @@
 
 <div class="d-flex justify-content-between mt-3">
     <form action="/history" method="POST">
-        <input type="hidden" name="newDate" value="${newDate}">
+        <input type="hidden" name="clickedDate" th:value="${clickedDate}" />
         <button type="submit" class="btn-secondary btn-block text-center">읽기 완료</button>
     </form>
 </div>

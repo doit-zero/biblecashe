@@ -3,6 +3,7 @@ package hello.biblecashe.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.time.LocalDate;
 
@@ -14,21 +15,20 @@ public class History {
     @GeneratedValue
     private Long idx;
 
-    @Column(columnDefinition = "DATE")
-    private LocalDate readTime;
-
-    private ReadingStatus readingStatus;
-
     @ManyToOne
     private Member member;
 
-    @ManyToOne
-    private Range range;
+    @Column(columnDefinition = "DATE")
+    private LocalDate readTime;
 
-    public History(LocalDate readTime, ReadingStatus readingStatus, Member member,Range range) {
-        this.readTime = readTime;
-        this.readingStatus = readingStatus;
-        this.member = member;
-        this.range = range;
+    @Column(nullable = false)
+    private int readCount = 0;
+
+    public static History create(Member member, int readCount, LocalDate readTime) {
+        History history = new History();
+        history.member = member;
+        history.readCount = readCount;
+        history.readTime = readTime;
+        return history;
     }
 }

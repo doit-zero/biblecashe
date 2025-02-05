@@ -24,17 +24,17 @@ public class ContentController {
                               @RequestParam("month") int month,
                               @RequestParam("date") int date,
                               Model model){
-        log.info("Date: {}-{}-{}", year, month, date);
         /**
          * 1. 해당 날짜에 맞는 content를 가져온다.
          * 2. ReadingHistory에서 readingStatus를 가져온다.
          * 3. model에 담아서 전송한다.
          * */
-        LocalDate newDate = LocalDate.of(year, month, date);
-        List<ContentDto> contentDtoList = contentService.getContent(newDate);
+        LocalDate clickedDate = LocalDate.of(year, month, date);
+        log.info("clickedDate : {}",clickedDate);
+        List<ContentDto> contentDtoList = contentService.getContent(clickedDate);
         //log.info("contentList: {}",contentDtoList);
         model.addAttribute("contentDtoList",contentDtoList);
-        model.addAttribute("newDate",newDate);
+        model.addAttribute("clickedDate",clickedDate);
         //contentService.getReadingStatus();
         return "content";
     }
