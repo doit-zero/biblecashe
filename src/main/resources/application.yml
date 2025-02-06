@@ -1,11 +1,12 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/bible
-    username: sa
-    password: sa
-    driver-class-name: org.h2.Driver
+    url: jdbc:mysql://localhost:3306/Bible
+    username: root
+    password: twojmit99!
+    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     properties:

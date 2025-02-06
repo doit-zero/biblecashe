@@ -27,8 +27,8 @@ public class Member {
     @Column(name = "member_group")
     private Group group;
 
-    @Column(columnDefinition = "INTEGER DEFAULT 0")
-    private Integer readCount;
+    @Column(nullable = false)
+    private int readCount = 0;
 
     @OneToMany(mappedBy = "member")
     private List<History> historyList = new ArrayList<>();

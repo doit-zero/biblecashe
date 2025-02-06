@@ -26,7 +26,7 @@
             <span th:text="|${entry.key}등 |"></span>
 
             <!-- 순위 내 멤버들의 이름(그룹) 및 읽은 횟수 출력 -->
-            <span th:each="member, iterStat : ${entry.value}">
+            <span th:each="member, iterStat : ${entry.value}" th:if="${member.readCount > 0}">
         <span th:text="|${member.memberGroup} ${member.name} ${member.readCount}장|"></span>
 
                 <!-- 마지막 멤버가 아니면 쉼표 추가 -->
@@ -34,6 +34,7 @@
     </span>
             <br/>
         </div>
+
 
         <h2>이번주 순위</h2>
         <div th:each="entry : ${weeklyRankinMap}">

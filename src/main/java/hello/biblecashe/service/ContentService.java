@@ -32,15 +32,10 @@ public class ContentService {
         // 해당 날짜에 해당하는 Range를 가져온다.
         //Optional<Range> range = rangeRepository.findByUpdatedAtBetween(startOfDay,endOfDay);
         Optional<Range> range = rangeRepository.findByUpdatedAt(localDate);
-        log.info("rage: {}",range);
-        log.info("range.get().getBook() : {}",range.get().getBook());
-        log.info("range.get().getEndChapter() : {}",range.get().getEndChapter());
-
 
         // Range에 해당하는 Content들을 가져온 후 ContentDto로 변환
         List<Object[]> results = contentRepository.findBookDetails(range.get().getBook(), range.get().getEndChapter());
 
-        log.info("contentList : {}",results.toString());
         List<ContentDto> contentDtoList = new ArrayList<>();
 
         for (Object[] row : results) {
@@ -52,7 +47,6 @@ public class ContentService {
             // ContentDto로 변환하여 리스트에 추가
             contentDtoList.add(new ContentDto(longLabel,chapter, paragraph, sentence));
         }
-
         return contentDtoList;
     }
 

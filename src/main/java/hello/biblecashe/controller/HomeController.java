@@ -51,10 +51,11 @@ public class HomeController {
         List<RankDto> weeklyRankinList = weeklyRanking.stream()
                 .map(row -> new RankDto(
                         (String) row[0], // name
-                        Group.valueOf((String) row[1]), // memberGroup
+                        Group.valueOf(String.valueOf(row[1])), // ✅ Character → String 변환 후 Enum 변환
                         ((Number) row[2]).intValue(), // readCount
                         ((Number) row[3]).intValue() // ranking
                 )).toList();
+
         log.info("weeklyRankinList : {}",weeklyRankinList);
         Map<Integer, List<RankDto>> weeklyRankinMap = weeklyRankinList.stream()
                 .collect(Collectors.groupingBy(RankDto::getRanking));
@@ -67,7 +68,7 @@ public class HomeController {
         List<RankDto> rankDtoList = results.stream()
                 .map(row -> new RankDto(
                         (String) row[0],
-                        Group.valueOf((String) row[1]),
+                        Group.valueOf(String.valueOf(row[1])),  // ✅ 수정: Character → String 변환
                         ((Number) row[2]).intValue(),
                         ((Number) row[3]).intValue()
                 ))
@@ -82,8 +83,8 @@ public class HomeController {
         List<Object[]> countSumByGroup = memberRepository.getReadCountSumByGroup();
         List<GroupReadCountDto> groupReadCountDtos = countSumByGroup.stream()
                 .map(row -> new GroupReadCountDto(
-                        Group.valueOf((String) row[0]), // Enum 변환
-                        ((Number) row[1]).intValue()   // readCount 합계 변환
+                        Group.valueOf(String.valueOf(row[0])), // ✅ Character → String 변환 후 Enum 변환
+                        ((Number) row[1]).intValue()           // readCount 합계 변환
                 ))
                 .collect(Collectors.toList());
         model.addAttribute("groupReadCountDtos", groupReadCountDtos);

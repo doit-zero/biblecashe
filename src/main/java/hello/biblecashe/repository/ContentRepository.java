@@ -31,7 +31,8 @@ public interface ContentRepository extends JpaRepository<Content,Long> {
                     "   ORDER BY book, chapter " +
                     "   LIMIT 5" +
                     ") t " +
-                    "LEFT JOIN content c ON c.chapter = t.chapter AND c.book = t.book",
+                    "LEFT JOIN content c ON c.chapter = t.chapter AND c.book = t.book " +
+                    "ORDER BY c.chapter asc , c.paragraph asc",
             nativeQuery = true
     )
     List<Object[]> findBookDetails(@Param("recentBook") int recentBook, @Param("recentEndChapter") int recentEndChapter);
